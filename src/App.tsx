@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { ShopConnector } from "./components/shop/ShopConnector";
+import configureStore from "./store";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const store = configureStore();
+
+export default class App extends Component
+{
+  render = () => {
+    return <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/shop" component={ShopConnector} />
+          <Redirect to="/shop" />
+        </Switch>
+      </Router>
+    </Provider>
+  };
 }
-
-export default App;
