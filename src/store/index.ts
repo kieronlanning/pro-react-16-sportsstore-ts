@@ -3,10 +3,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { categoriesReducer } from "./categories/reducers";
 import { productsReducer } from "./products/reducers";
+import { cartReducers } from "./cart/reducers";
 
 const rootReducer = combineReducers({
     categories: categoriesReducer,
-    products: productsReducer
+    products: productsReducer,
+    cart: cartReducers
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

@@ -4,9 +4,7 @@ import {
 } from "./types";
 import { data as placeholderData } from "../testData/placeholderData";
 
-export function loadCategories(categories : string[] | null) : CategoryActionTypes {
-    return {
-        type: LOAD_CATEGORIES,
-        payload: categories || placeholderData.categories
-    };
-};
+export const loadCategories = (categories : string[] | null) : CategoryActionTypes => ({
+    type: LOAD_CATEGORIES,
+    payload: categories || placeholderData.categories
+});

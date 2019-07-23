@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import ToggleLink from "../common/ToggleLink";
 
 export class CategoryNavigation extends Component<ICategoryNavigationProps> {
     render = () => {
         return <React.Fragment>
-            <Link className="btn btn-secondary btn-block"
-                to={this.props.baseUrl}>All</Link>
+            <ToggleLink to={this.props.baseUrl} exact={true}>All</ToggleLink>
             {this.props.categories && this.props.categories.map(c => 
-                <Link className="btn btn-secondary btn-block" key={c}
-                    to={`${this.props.baseUrl}/${c.toLowerCase()}`}>{c}</Link>
+                <ToggleLink key={c} to={`${this.props.baseUrl}/${c.toLowerCase()}`}>{c}</ToggleLink>
             )}
         </React.Fragment>
     };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Product } from "../../types/types";
+import { addToCart } from "../../store/cart/actions";
 
 export class ProductList extends Component<IProductListProps> {
     render = () => {
@@ -17,6 +18,10 @@ export class ProductList extends Component<IProductListProps> {
                 </h4>
                 <div className="card-text bg-white p-1">
                     {p.description}
+                    <button className="btn btn-success btn-sm float-right"
+                        onClick={() => this.props.addToCart(p, 1)}>
+                        Add to Cart
+                    </button>
                 </div>
             </div>
         );
@@ -24,5 +29,6 @@ export class ProductList extends Component<IProductListProps> {
 };
 
 interface IProductListProps {
-    products: Product[]
+    products: Product[],
+    addToCart: typeof addToCart
 }
